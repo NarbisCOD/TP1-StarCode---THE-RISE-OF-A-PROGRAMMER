@@ -216,51 +216,51 @@ void mostrar_resultados();
 int main(){
 
     float midiclorianos = CANT_MIDICLORIANOS_DEF;
-	char voluntad = VOLUNTAD_DEF;
-	char pasado = PASADO_DEF;
+    char voluntad = VOLUNTAD_DEF;
+    char pasado = PASADO_DEF;
 	
     float valor_voluntad = VALOR_VOLUNT_DEF;
-	float valor_pasado = VALOR_PASADO_DEF;
+    float valor_pasado = VALOR_PASADO_DEF;
     float valor_influencia = VALOR_INFLUENCIA;
     float influencia = VALOR_INFLUENCIA_DEF;
 	
     float probabilidad_convertirse = VALOR_PROB_DEF;
     float valor_oscuridad = VALOR_OSCURIDAD;
-	int tiempo_restante_jedi = TIEMPO_JEDI_DEF;
+    int tiempo_restante_jedi = TIEMPO_JEDI_DEF;
 
     recibir_padawan();
 
     midiclorianos = ingreso_midiclorianos();
 
-	voluntad = ingreso_voluntad();
+    voluntad = ingreso_voluntad();
 	
-	valor_voluntad = valor_num_voluntad(voluntad); 
+    valor_voluntad = valor_num_voluntad(voluntad); 
 
-	pasado = ingreso_pasado();
+    pasado = ingreso_pasado();
 
-	valor_pasado = valor_num_pasado(pasado); 
+    valor_pasado = valor_num_pasado(pasado); 
 
     influencia = calcular_influencia(midiclorianos, valor_influencia);
  
     probabilidad_convertirse = calcular_prob_convertirse(valor_voluntad, valor_oscuridad, influencia, valor_pasado);
    
-	tiempo_restante_jedi = calcular_tiempo_restante_jedi((int)influencia, (int)valor_voluntad);
+    tiempo_restante_jedi = calcular_tiempo_restante_jedi((int)influencia, (int)valor_voluntad);
 
-	finalizo_analisis();
+    finalizo_analisis();
 
-	mostrar_resultados();
+    mostrar_resultados();
 
     printf("\n ->Cantidad de Midiclorianos del Aprendiz: %.1f\n", midiclorianos);
 
-	mostrar_voluntad(voluntad);
+    mostrar_voluntad(voluntad);
 
     printf("(%c)\n", voluntad);
 
     printf("\n ->El Valor Numerico de la Voluntad es: %.1f\n", valor_voluntad);
     		
-	mostrar_pasado(pasado);
+    mostrar_pasado(pasado);
    
-	printf("(%c)\n", pasado);
+    printf("(%c)\n", pasado);
 
     printf("\n ->El Valor Numerico de su Pasado es: %.1f\n", valor_pasado );
 
@@ -268,7 +268,7 @@ int main(){
 
     printf("\n ->El Aprendiz tiene una Probalidad de Convertirse al Lado Oscuro de: %.1f%\n", probabilidad_convertirse);
 
-	printf("\n ->El Aprendiz tardara %i meses en convertirse en Jedi\n", tiempo_restante_jedi);
+    printf("\n ->El Aprendiz tardara %i meses en convertirse en Jedi\n", tiempo_restante_jedi);
 
     if (probabilidad_convertirse > PROB_MAX ){
 	printf (MSJ_ADVERTENCIA);
