@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <math.h>
 #include <stdbool.h>
 
 
@@ -113,8 +112,7 @@ char ingreso_voluntad();
 
 
 /*Pre: "voluntad_verificar" debe corresponder al tipo de dato char.
- *Post: Devuelve "VOLUNTAD_VERIFICADO" si el valor de "voluntad_verificar" sea igual a alguna de las opciones:
- *	   	VOLUNTAD_FLOJA, VOLUNTAD_BUENA, VOLUNTAD_MEDIANA, VOLUNTAD_ALTA, VOLUNTAD_ENORME o VOLUNTAD_PELIGROSA,
+ *Post: Devuelve "VOLUNTAD_VERIFICADO" si el valor de "voluntad_verificar"  corresponda a las opciones válidas
  *      caso contrario devuelve "VOLUNTAD_NO_VERIFICADO.
 */
 bool verificar_voluntad(float voluntad_verificar);
@@ -122,7 +120,7 @@ bool verificar_voluntad(float voluntad_verificar);
 
 
 /*Pre:  "voluntad_recib_msj" corresponde "voluntad_recibida".
- *Post: Evalua la "voluntad_recib_msj", le asigna un mensaje perdeterminado de "voluntad_recibida" segun los valores correspondientes 
+ *Post: Evalua la "voluntad_recib_msj", le asigna un mensaje perdeterminado de "voluntad_recibida" segun los valores válidos
  * 	    y muestra por consola el mensaje de la volunta recibida.
 */
 void mostrar_voluntad(char voluntad_recib_msj);
@@ -130,7 +128,7 @@ void mostrar_voluntad(char voluntad_recib_msj);
 
 
 /*Pre:  "nivel_voluntad" corresponde "voluntad_recibida".
- *Post: Evalua la "nivel_voluntad", le asigna un valor numerico, segun los valores correspondientes
+ *Post: Evalua la "nivel_voluntad", le asigna un valor numerico, según los valores válidos
  * 		y devuelve el el valor evaluado".
 */
 float valor_num_voluntad(char nivel_voluntad);
@@ -146,8 +144,7 @@ char ingreso_pasado();
 
 
 /*Pre: "pasado_verificar" debe corresponder al tipo de dato char.
- *Post: Devuelve "PASADO_VERIFICADO" si el valor de "pasado_verificar" sea igual a alguna de las opciones:
- *	   	PASADO_BUENO, PASADO_NORMAL o PASADO_TRAGICO,
+ *Post: Devuelve "PASADO_VERIFICADO" si el valor de "pasado_verificar" si corresponde a valores válidos
  *      caso contrario devuelve "PASADO_NO_VERIFICADO".
 */
 bool verificar_pasado(float pasado_verificar);
@@ -155,7 +152,7 @@ bool verificar_pasado(float pasado_verificar);
 
 
 /*Pre:  "pasado_recib_msj" corresponde "pasado_recibido".
- *Post: Evalua la "voluntad_recib_msj", le asigna un mensaje perdeterminado de "pasado_recibido" segun los valores correspondientes 
+ *Post: Evalua el carácter de "voluntad_recib_msj", le asigna un mensaje a "pasado_recibido" según valores válidos
  * 	    y muestra por consola el mensaje del pasado recibido.
 */
 void mostrar_pasado (char pasado_recib_msj);
@@ -171,27 +168,22 @@ float valor_num_pasado (char pasado_num);
 
 
 /*Pre: "valor_midiclorianos" corresponde al valor "midiclorianos_recibidos" y "influencia_def" corresponde al valor VALOR_INFLUENCIA_DEF.
- *Post: Calcula la influencia  del Aprendiz con el valor VALOR_INFLUENCIA_DEF y el valor actual de "midiclorianos_recibidos" 
- * 		Devuelve el resultado de multiplicar "midiclorianos_recibido" y VALOR_INFLUENCIA_DEF 
+ *Post: Calcula la influencia del Aprendiz y devuelve el resultado del cálculo.
 */
 float calcular_influencia(float valor_midiclorianos, float influencia_def);
 
 
 /*Pre: "num_voluntad" corresponde al valor numerico de voluntad, "oscuridad_def" corresponde al valor VALOR_OSCURIDAD,
- *	   "influencia_calc" cooresponde al calculo de influencia (calcular_influencia) y "num_pasado" corresponde al valor numerico de pasado.
- *Post: Calcula la probabilidad del Aprendiz de convertirse al lado oscuro con el valor VALOR_OSCURIDAD y el valor actual de "num_voluntad","oscuridad_def" y "num_pasado"
- * 		Devuelve el resultado de multiplicar VALOR_OSCURIDAD y influencia_calc, luego dividir por "num_pasado" y sumarle "num_voluntad"
+ *	   "influencia_calc" cooresponde al valor de"calcular_influencia" y "num_pasado" corresponde al valor numerico de pasado.
+ *Post: Calcula la probabilidad del Aprendiz de convertirse al lado oscuro y devuelve el resultado del calculo.
 */
 float calcular_prob_convertirse(float num_voluntad, float oscuridad_def, float influencia_calc, float num_pasado);
 
 
 
-/*Pre: -."nvo_valor_influencia" corresponde a "influencia"  y se modifica con VALOR_MODIF_INFLUENCI  
- *		   y "nvo_valor_voluntad" corresponde a "num_voluntad" y se modifica con VALOR_MODIF_VOLUNTAD		 	
- *Post:-. Calcula el nuevo valor de influencia y el nuevo valor numerico voluntad con los valores actuales "influencia" y "num_voluntad" 
- *		   aplicando el VALOR_MODIF_INFLUENCIA/100 y  VALOR_MODIF_VOLUNTAD/100
- *         Devuelve el resultado de restar a nvo_valor_influencia el resultado de multiplicar nvo_valor_influencia VALOR_MODIF_INFLUENCIA/100 y
- *		   el resultado de sumar a nvo_valor_voluntad el resultado de multiplicar nvo_valor_voluntad VALOR_MODIF_VOLUNTAD/100.
+/*Pre: -."nvo_valor_influencia" corresponde a "influencia"  con el nuevo valor de  VALOR_MODIF_INFLUENCIA  
+ *		   y "nvo_valor_voluntad" corresponde a "num_voluntad" con el nuevo valor de VALOR_MODIF_VOLUNTAD		 	
+ *Post:-. Calcula el tiempo restante para convertirse en jedi y devuelve resultado.
  */
 int calcular_tiempo_restante_jedi(int nvo_valor_influencia , int nvo_valor_voluntad);
 
@@ -403,11 +395,11 @@ bool verificar_pasado(float pasado_verificar){
 
 
 void mostrar_pasado (char pasado_recib_msj){
-    if (pasado_recib_msj == PASADO_BUENO){
+    if(pasado_recib_msj == PASADO_BUENO){
 		printf(MSJ_PASADO_BUENO);
-	}else if (pasado_recib_msj == PASADO_NORMAL){
+	}else if(pasado_recib_msj == PASADO_NORMAL){
 		printf(MSJ_PASADO_NORMAL);
-	}else {
+	}else{
 		printf(MSJ_PASADO_TRAGICO);
 	}
 }
@@ -455,7 +447,6 @@ void mostrar_resultados(){
 	printf(MSJ_RESULTADOS);
 }
  
-
 
 
 
